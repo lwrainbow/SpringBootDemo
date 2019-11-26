@@ -1,2 +1,2 @@
-# SpringBootJPA
-JPA / Hibernate Example with Spring Boot
+# Spring Boot Demo
+
