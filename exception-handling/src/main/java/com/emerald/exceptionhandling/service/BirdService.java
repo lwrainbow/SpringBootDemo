@@ -1,5 +1,6 @@
 package com.emerald.exceptionhandling.service;
 
+import com.emerald.exceptionhandling.exception.ResourceNotFoundException;
 import com.emerald.exceptionhandling.model.Bird;
 import com.emerald.exceptionhandling.repository.BirdRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,8 @@ public class BirdService {
     }
 
     public Bird getBirdById(Long birdId) {
-        return birdRepository.findById(birdId).orElseThrow();
+        return birdRepository.findById(birdId)
+                .orElseThrow(() -> new ResourceNotFoundException("BirdId " + birdId + " not found"));
     }
 
     public Page<Bird> getAllBirds(Pageable pageable) {
